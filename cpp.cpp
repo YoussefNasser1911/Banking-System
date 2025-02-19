@@ -1,0 +1,197 @@
+#include <iostream>
+#include <string>
+#include<algorithm>
+#include<iomanip>
+
+using namespace std;
+
+
+// Some Functions to perform (Banking System Operations).
+void showBalance(double balance); 
+double deposit();                        
+double withdraw(double balance);
+
+
+
+// Main Function.
+int main() {
+    
+    
+    //logging in to the account
+    string username[] = { "Moheb23", "Ahmed165", "Youssef564" };
+    string pass[] = {"passrt233", "erefdkl45", "654fggdd" };
+    string accountName, password;
+
+    cout << "Login to your account \n\n";
+
+    cout << "account Name: ";
+    getline( cin,accountName);
+
+
+    cout << endl;
+
+    cout << "Password: ";
+    getline(cin, password);
+
+    bool x = 0;
+    for (int i = 0; i < 3; i++) 
+    {
+        if (accountName == username[i]) 
+        {
+            for (int j = 0; j < 3; j++) 
+            {
+                if (password == pass[i]) 
+                {
+                    x = 1;
+                    break;
+
+                }
+            }
+            if (x)
+                break;
+            
+        }
+    }
+   if( !x)  {
+    cout << "inavlid Password or username";
+    cout << endl;
+    return 0;
+   }
+    
+//*********************// 
+
+
+   
+string logout;
+    
+
+
+//*********************// 
+
+ // Initialize variables.
+double balance = 0;
+
+int choice = 0; 
+
+
+
+// Do while loop. 
+
+do{ //***********************************//
+    cout <<"********************" <<endl;
+    cout <<"Enter Your Choice:" <<endl;
+    cout <<"********************" <<endl;
+    cout <<"1. Show Balance " <<endl;
+    cout <<"2. Deposit Money" <<endl;
+    cout <<"3. Withdraw Money" <<endl;
+    cout <<"4. Exit" <<endl;
+    cin >> choice;
+    //***********************************//
+
+
+    
+    // Here are some functions to (correct errors) that may occur.
+
+    cin.clear();
+    fflush(stdin);
+
+    // Switch.
+
+    switch(choice){
+    case 1: 
+    showBalance(balance);
+                break;
+    case 2: 
+    balance += deposit();
+    showBalance(balance);
+                break;
+    case 3: 
+    balance -= withdraw(balance);
+    showBalance(balance);
+                break;
+    case 4: 
+    cout << "Thanks For Visiting Sir!" <<endl;
+                //break;
+    case 5:  
+    cout << "if is logout Enter y:\n";
+
+getline(cin, logout);
+if (logout=="")
+{
+    int counter = 0;
+    while (counter <= 60) 
+    {
+
+        if (counter == 60) {
+            cout << "logout" << endl;
+            break;
+        }
+        counter++;
+    }
+}
+if (logout == "y"){
+    cout << "Succsses Submation \n" << "Thank You" << endl;
+                break;          
+    default : 
+    cout << "Invalid Choice" <<endl;                                                
+    
+    
+    }
+}
+
+    
+}while(choice !=4);
+
+    return 0;
+
+}
+
+// Finally, the above functions were used.
+
+void showBalance(double balance){
+    cout << "Your Balance is: $" << setprecision(2) << fixed << balance << endl;
+    
+}
+double deposit(){
+    double amount = 0;
+    cout << "Enter Amount to be deposited:" <<endl;
+    cin >> amount;
+
+    if( amount > 0){
+        return amount;
+    }
+    else{
+        cout << "That's not a valid amount" <<endl;
+        return 0; 
+    }
+    
+}
+double withdraw(double balance){
+
+    double amount = 0;
+    cout << "Enter amount to be withdrawn:" <<endl;
+    cin >> amount;
+
+    if ( amount > balance ){
+        cout << "Insufficient Funds" <<endl;
+        return 0;
+    }
+
+    else if ( amount < 0){
+        cout << "That's not a valid amount" <<endl;
+        return 0;
+    }
+    
+    else{
+        return amount;
+    }
+
+
+    
+    
+	
+
+}
+
+
+
