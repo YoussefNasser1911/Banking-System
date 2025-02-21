@@ -113,7 +113,7 @@ do{ //***********************************//
     cout << "Thanks For Visiting Sir!" <<endl;
                 //break;
     case 5:  
-    cout << "if is logout Enter y:\n";
+    cout << "If you want to log out, click on y:\n";
 
 getline(cin, logout);
 if (logout=="")
